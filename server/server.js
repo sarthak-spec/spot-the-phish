@@ -18,11 +18,31 @@ mongoose
   .catch((error) => {
     console.error("❌ MongoDB connection failed:", error.message);
   });
-const app = express();
-const PORT = 8000;
 
-app.use(cors());
+const app = express();
+
+const PORT = process.env.PORT || 8000;
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+  process.env.FRONTEND_URL
+].filter(Boolean);
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    }
+  })
+);
+
 app.use(express.json());
+
 
 app.post("/api/admin/login", async (req, res) => {
   try {
@@ -385,6 +405,8 @@ app.get("/api/admin/recent-quizzes", adminAuth, async (req, res) => {
 });
 
 // Start Express server
-app.listen(PORT, "127.0.0.1", () => {
-  console.log(`Server running on http://127.0.0.1:${PORT}`);
+
+ // Start Express server
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
