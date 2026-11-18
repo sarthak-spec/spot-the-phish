@@ -1,0 +1,966 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: #f5f7fb;
+  color: #14213d;
+}
+
+button, input {
+  font: inherit;
+}
+
+.header {
+  background: #ffffff;
+  padding: 20px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+  gap: 16px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: #2563eb;
+}
+
+.header-label {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.main {
+  max-width: 900px;
+  margin: auto;
+  padding: 65px 20px 25px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.eyebrow {
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  font-size: clamp(34px, 6vw, 54px);
+  line-height: 1.15;
+  margin: 16px 0;
+}
+
+.hero p {
+  color: #64748b;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.checker-card {
+  background: white;
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+.checker-card h2 {
+  margin-top: 0;
+}
+
+.checker-card > p {
+  color: #64748b;
+}
+
+.checker-form {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.checker-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  outline-color: #2563eb;
+}
+
+.checker-form button {
+  background: #2563eb;
+  color: white;
+  border: 0;
+  padding: 15px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.checker-form button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.error {
+  color: #dc2626 !important;
+  margin-top: 16px;
+}
+
+.result {
+  margin-top: 30px;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 25px;
+}
+
+.result-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.risk-badge {
+  color: white;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.score {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.score strong {
+  font-size: 36px;
+}
+
+.score span {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.progress {
+  height: 10px;
+  background: #e2e8f0;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+
+.progress-fill {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.result h4 {
+  margin-bottom: 10px;
+}
+
+.result li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.result p {
+  line-height: 1.6;
+}
+
+.disclaimer {
+  color: #64748b;
+  font-size: 12px;
+  margin-top: 22px;
+}
+
+footer {
+  text-align: center;
+  padding: 45px 0 20px;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .header-label {
+    display: none;
+  }
+
+  .checker-card {
+    padding: 22px;
+  }
+
+  .checker-form {
+    flex-direction: column;
+  }
+
+  .checker-form button {
+    width: 100%;
+  }
+}
+
+/* Phishing Awareness Quiz */
+
+.quiz-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 32px;
+  margin-top: 35px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+.quiz-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.quiz-heading span {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.quiz-progress {
+  background: #e2e8f0;
+  height: 8px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 20px 0 28px;
+}
+
+.quiz-progress-fill {
+  height: 100%;
+  background: #2563eb;
+  transition: width 0.3s ease;
+}
+
+.quiz-card h3 {
+  font-size: 20px;
+  margin-bottom: 22px;
+}
+
+.quiz-options {
+  display: grid;
+  gap: 12px;
+}
+
+.quiz-option {
+  padding: 15px;
+  text-align: left;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #14213d;
+}
+
+.quiz-option:hover:not(:disabled) {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.quiz-option.correct {
+  background: #dcfce7;
+  border-color: #22c55e;
+}
+
+.quiz-option.incorrect {
+  background: #fee2e2;
+  border-color: #ef4444;
+}
+
+.quiz-feedback {
+  margin-top: 22px;
+  padding: 18px;
+  background: #f1f5f9;
+  border-radius: 12px;
+}
+
+.quiz-feedback p {
+  line-height: 1.6;
+}
+
+.quiz-button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.quiz-final-score {
+  font-size: 48px;
+  font-weight: 800;
+  color: #2563eb;
+}
+
+@media (max-width: 600px) {
+  .quiz-card {
+    padding: 22px;
+  }
+
+  .quiz-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Admin Dashboard */
+
+.admin-dashboard {
+  margin: 40px auto;
+  padding: 30px;
+  max-width: 1100px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #1e293b;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.admin-dashboard h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.admin-dashboard > p {
+  color: #64748b;
+  margin-bottom: 25px;
+}
+
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.admin-stat-card {
+  padding: 24px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.admin-stat-card h3 {
+  font-size: 15px;
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 12px;
+}
+
+.admin-stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .admin-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-dashboard {
+    padding: 20px;
+  }
+
+  .admin-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.admin-recent-quizzes {
+  margin-top: 35px;
+}
+
+.admin-recent-quizzes h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+/* ===== ADMIN LOGIN ===== */
+
+.admin-login {
+  max-width: 460px;
+  margin: 60px auto;
+  padding: 36px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+.admin-login h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+.admin-login > p {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+.admin-login form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-login label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.admin-login input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 15px;
+  background: #ffffff;
+  color: #111827;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.admin-login input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.admin-login button {
+  margin-top: 12px;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #4f46e5;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.admin-login button:hover:not(:disabled) {
+  background: #4338ca;
+  transform: translateY(-2px);
+}
+
+.admin-login button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.admin-login [role="alert"] {
+  color: #dc2626;
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+@media (max-width: 520px) {
+  .admin-login {
+    margin: 32px 16px;
+    padding: 24px;
+  }
+}
+
+/* ==========================================
+   SPOT THE PHISH — FUTURISTIC CYBER THEME
+   ========================================== */
+
+:root {
+  --cyber-bg: #070b18;
+  --cyber-panel: rgba(15, 23, 42, 0.82);
+  --cyber-border: rgba(103, 232, 249, 0.15);
+  --cyber-text: #f1f5f9;
+  --cyber-muted: #94a3b8;
+  --cyber-cyan: #22d3ee;
+  --cyber-violet: #8b5cf6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(
+      ellipse at 15% 5%,
+      rgba(34, 211, 238, 0.13),
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 85% 25%,
+      rgba(139, 92, 246, 0.13),
+      transparent 40%
+    ),
+    var(--cyber-bg);
+
+  color: var(--cyber-text);
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image:
+    linear-gradient(
+      rgba(148, 163, 184, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(148, 163, 184, 0.025) 1px,
+      transparent 1px
+    );
+  background-size: 48px 48px;
+}
+
+.header {
+  background: rgba(7, 11, 24, 0.8);
+  border-bottom: 1px solid var(--cyber-border);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.logo {
+  color: var(--cyber-cyan);
+  letter-spacing: -0.5px;
+  text-shadow: 0 0 24px rgba(34, 211, 238, 0.25);
+}
+
+.header-label {
+  color: var(--cyber-muted);
+}
+
+.main {
+  max-width: 1100px;
+  padding-top: 80px;
+}
+
+.hero {
+  margin-bottom: 55px;
+  animation: cyberFadeUp 0.7s ease both;
+}
+
+.eyebrow {
+  display: inline-block;
+  color: var(--cyber-cyan);
+  background: rgba(34, 211, 238, 0.07);
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  padding: 10px 18px;
+  border-radius: 999px;
+  letter-spacing: 2.5px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+  margin: 26px 0;
+  background: linear-gradient(
+    120deg,
+    #ffffff 15%,
+    #67e8f9 55%,
+    #a78bfa 95%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  color: var(--cyber-muted);
+  max-width: 650px;
+  margin: 0 auto;
+  font-size: 18px;
+}
+
+.checker-card,
+.quiz-card,
+.admin-dashboard,
+.admin-login {
+  background: var(--cyber-panel);
+  border: 1px solid var(--cyber-border);
+  border-radius: 22px;
+  color: var(--cyber-text);
+  box-shadow:
+    0 24px 65px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  animation: cyberFadeUp 0.65s ease both;
+}
+
+.checker-card,
+.quiz-card {
+  padding: 38px;
+}
+
+.checker-card h2,
+.quiz-card h2,
+.quiz-card h3,
+.admin-dashboard h2,
+.admin-login h2 {
+  color: var(--cyber-text);
+}
+
+.checker-card > p,
+.quiz-heading span,
+.admin-dashboard > p,
+.admin-login > p,
+.score span,
+.disclaimer {
+  color: var(--cyber-muted);
+}
+
+.checker-form input,
+.admin-login input {
+  background: rgba(7, 11, 24, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 12px;
+  color: #f8fafc;
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.checker-form input::placeholder,
+.admin-login input::placeholder {
+  color: #64748b;
+}
+
+.checker-form input:focus,
+.admin-login input:focus {
+  border-color: var(--cyber-cyan);
+  box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.1);
+}
+
+.checker-form button,
+.quiz-button,
+.admin-login button {
+  background: linear-gradient(
+    135deg,
+    #0891b2,
+    #6366f1
+  );
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(34, 211, 238, 0.12);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    filter 0.2s;
+}
+
+.checker-form button:hover:not(:disabled),
+.quiz-button:hover:not(:disabled),
+.admin-login button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.12);
+  box-shadow: 0 12px 32px rgba(99, 102, 241, 0.25);
+}
+
+.result {
+  border-top: 1px solid var(--cyber-border);
+}
+
+.score strong,
+.quiz-final-score {
+  color: var(--cyber-cyan);
+  text-shadow: 0 0 24px rgba(34, 211, 238, 0.2);
+}
+
+.progress,
+.quiz-progress {
+  background: rgba(148, 163, 184, 0.12);
+}
+
+.quiz-progress-fill {
+  background: linear-gradient(
+    90deg,
+    var(--cyber-cyan),
+    var(--cyber-violet)
+  );
+}
+
+.quiz-option {
+  background: rgba(15, 23, 42, 0.85);
+  color: var(--cyber-text);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    transform 0.2s;
+}
+
+.quiz-option:hover:not(:disabled) {
+  background: rgba(34, 211, 238, 0.08);
+  border-color: var(--cyber-cyan);
+  transform: translateX(4px);
+}
+
+.quiz-option.correct {
+  background: rgba(34, 197, 94, 0.16);
+  border-color: #22c55e;
+  color: #bbf7d0;
+}
+
+.quiz-option.incorrect {
+  background: rgba(239, 68, 68, 0.16);
+  border-color: #ef4444;
+  color: #fecaca;
+}
+
+.quiz-feedback {
+  background: rgba(34, 211, 238, 0.06);
+  border: 1px solid var(--cyber-border);
+  color: var(--cyber-text);
+}
+
+.admin-stats-grid {
+  gap: 16px;
+}
+
+.admin-stat-card {
+  background: rgba(7, 11, 24, 0.5);
+  border: 1px solid var(--cyber-border);
+  border-radius: 16px;
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
+}
+
+.admin-stat-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(34, 211, 238, 0.45);
+}
+
+.admin-stat-card h3 {
+  color: var(--cyber-muted);
+}
+
+.admin-stat-value {
+  color: var(--cyber-cyan);
+}
+
+.admin-recent-scans,
+.admin-recent-quizzes {
+  margin-top: 36px;
+}
+
+.admin-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--cyber-border);
+  border-radius: 14px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 15px;
+  border-bottom: 1px solid var(--cyber-border);
+  font-size: 14px;
+}
+
+.admin-table th {
+  color: var(--cyber-cyan);
+  background: rgba(34, 211, 238, 0.06);
+  font-weight: 600;
+}
+
+.admin-table td {
+  color: #cbd5e1;
+}
+
+.admin-table tbody tr:hover {
+  background: rgba(34, 211, 238, 0.035);
+}
+
+.admin-url {
+  overflow-wrap: anywhere;
+  max-width: 360px;
+}
+
+.risk-badge.low {
+  background: rgba(34, 197, 94, 0.15);
+  color: #86efac;
+}
+
+.risk-badge.medium {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fcd34d;
+}
+
+.risk-badge.high {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+}
+
+.admin-login {
+  max-width: 460px;
+  margin: 50px auto;
+  padding: 38px;
+}
+
+.admin-login label {
+  color: #cbd5e1;
+}
+
+.admin-login input {
+  background: rgba(7, 11, 24, 0.65);
+  color: #f8fafc;
+}
+
+.admin-login button {
+  background: linear-gradient(135deg, #0891b2, #6366f1);
+}
+
+.admin-login button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #06b6d4, #7c3aed);
+}
+
+.admin-login [role="alert"],
+.error {
+  color: #fca5a5 !important;
+}
+
+footer {
+  color: #64748b;
+  border-top: 1px solid var(--cyber-border);
+  margin-top: 50px;
+}
+
+/* Animations */
+
+@keyframes cyberFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding-top: 45px;
+  }
+
+  .checker-card,
+  .quiz-card,
+  .admin-dashboard,
+  .admin-login {
+    padding: 24px;
+  }
+
+  .admin-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    letter-spacing: -1px;
+  }
+
+  .admin-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .checker-form {
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== FUTURISTIC ADMIN LOGOUT BUTTON ===== */
+
+.admin-logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  margin: 35px 0 15px auto;
+  padding: 12px 22px;
+
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  border-radius: 12px;
+
+  color: #fca5a5;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.admin-logout-btn:hover {
+  background: rgba(239, 68, 68, 0.18);
+  border-color: #ef4444;
+  color: #ffffff;
+
+  box-shadow: 0 0 22px rgba(239, 68, 68, 0.18);
+  transform: translateY(-2px);
+}
+
+.admin-logout-btn:active {
+  transform: translateY(0);
+}
+
+.admin-logout-btn:focus-visible {
+  outline: 2px solid #fca5a5;
+  outline-offset: 3px;
+}
+
+.admin-logout-btn span {
+  font-size: 18px;
+  line-height: 1;
+}
