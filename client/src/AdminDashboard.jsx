@@ -16,7 +16,7 @@ function AdminDashboard({ token }) {
     async function fetchStats() {
       try {
        const response = await fetch(
-  "`${API_URL}/api/admin/stats`",
+ `${API_URL}/api/admin/stats`,
   {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -46,7 +46,7 @@ function AdminDashboard({ token }) {
     async function fetchRecentScans() {
       try {
        const response = await fetch(
-  "`${API_URL}/api/admin/recent-scans`",
+  `${API_URL}/api/admin/recent-scans`,
   {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -73,7 +73,7 @@ function AdminDashboard({ token }) {
     async function fetchRecentQuizzes() {
       try {
        const response = await fetch(
-  "`${API_URL}/api/admin/recent-quizzes`",
+ `${API_URL}/api/admin/recent-quizzes`,
   {
     headers: {
       Authorization: `Bearer ${token}`,

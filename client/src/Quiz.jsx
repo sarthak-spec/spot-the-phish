@@ -92,7 +92,7 @@ async function saveQuizResult(finalScore) {
 
   try {
     const response = await fetch(
-      "`${API_URL}/api/quiz-result`,",
+     `${API_URL}/api/quiz-result`,
       {
         method: "POST",
         headers: {

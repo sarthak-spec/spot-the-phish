@@ -22,7 +22,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "`${API_URL}/api/check-url`,",
+       `${API_URL}/api/check-url`,
         {
           method: "POST",
           headers: {

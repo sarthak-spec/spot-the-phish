@@ -14,7 +14,7 @@ function AdminLogin({ onLogin }) {
 
     try {
       const response = await fetch(
-        "`${API_URL}/api/admin/login`,",
+       `${API_URL}/api/admin/login`,
         {
           method: "POST",
           headers: {
