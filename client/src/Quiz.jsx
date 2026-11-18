@@ -1,4 +1,4 @@
-
+import { API_URL } from "./api";
 import { useState } from "react";
 
 const questions = [
@@ -92,7 +92,7 @@ async function saveQuizResult(finalScore) {
 
   try {
     const response = await fetch(
-      "http://127.0.0.1:8000/api/quiz-result",
+      "`${API_URL}/api/quiz-result`,",
       {
         method: "POST",
         headers: {
